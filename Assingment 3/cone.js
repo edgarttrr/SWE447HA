@@ -5,14 +5,7 @@ function init() {
 
     gl = WebGLUtils.setupWebGL( canvas );
     
-    attribute vec4 vPosition;
 
-void main() 
-{
-     gl_Position = vPosition;
-}
-    
-    
 
     if ( !gl ) {
         alert("Unable to setup WebGL");
@@ -23,10 +16,7 @@ void main()
 
     render();
 }
-void main()
-{
-    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-}
+
 
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
