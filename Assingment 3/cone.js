@@ -1,4 +1,4 @@
-var var gl = null;
+var gl = null;
 var cone = null; 
 
 function init() {
