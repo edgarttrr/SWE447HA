@@ -18,7 +18,7 @@ function Square(gl, vertexShaderId, fragmentShaderId) {
 	this.positions = {
 		values : new Float32Array([
 		    // Front face
-		 0.0, 0.0, 1.0, // Vertex 0
+		 0.0, 0.0, 0.0, // Vertex 0
 		 1.0, 0.0, 0.0, // Vertex 1
 		 1.0, 1.0, 0.0 // Vertex 2
 		 0.0, 1.0, 0.0,// Vertex 3
@@ -79,7 +79,7 @@ function Square(gl, vertexShaderId, fragmentShaderId) {
         //gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
 		var start = 0;
 		var count = this.count;
-		//gl.drawArrays(gl.TRIANGLE_STRIP, start, count); // TRIANGLE_STRIP
+		gl.drawArrays(gl.TRIANGLE_STRIP, start, count); // TRIANGLE_STRIP
 		gl.drawElements(gl.TRIANGLE_STRIP, this.indices.values.length, gl.UNSIGNED_SHORT, 0);
 		gl.drawElements(gl.TRIANGLES, this.indices.values.length, gl.UNSIGNED_SHORT, 0);
 
