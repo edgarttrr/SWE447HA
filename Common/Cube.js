@@ -121,6 +121,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
         const colorBuffer = gl.createBuffer();
   
         gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
         // Draw the cube's base
         gl.drawElements( gl.TRIANGLES, this.indices.count, gl.UNSIGNED_SHORT, 0 );
     }
