@@ -59,15 +59,15 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     };
     
      this.colors = { 
-        values : new Float32Array(
+        values : new Float32Array([
            
-    [1.0,  1.0,  1.0,  1.0,]    // Front face: white
-    [1.0,  0.0,  0.0,  1.0,]    // Back face: red
-    [0.0,  1.0,  0.0,  1.0,]    // Top face: green
-    [0.0,  0.0,  1.0,  1.0,]    // Bottom face: blue
-    [1.0,  1.0,  0.0,  1.0,]    // Right face: yellow
-    [1.0,  0.0,  1.0,  1.0,]    // Left face: purple
-            ),
+    1.0,  1.0,  1.0,  1.0,    // Front face: white
+    1.0,  0.0,  0.0,  1.0,    // Back face: red
+    0.0,  1.0,  0.0,  1.0,    // Top face: green
+    0.0,  0.0,  1.0,  1.0,    // Bottom face: blue
+    1.0,  1.0,  0.0,  1.0,    // Right face: yellow
+    1.0,  0.0,  1.0,  1.0,    // Left face: purple
+            ]),
         numComponents : 3
     };
     this.indices = { 
