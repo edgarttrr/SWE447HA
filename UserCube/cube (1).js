@@ -33,13 +33,13 @@ function init() {
     }
     
     document.getElementById("cBox").onclick = function() {
-    /*
+    
         var chk=document.getElementById("cBox").value;
         console.log("Clicked, new value = " + chk); // chk.checked
         if (chk == 0) document.getElementById("cBox").innerHTML = "1";
-        //else document.getElementById("cBox").innerHTML = 0;
-        //dAngle = 0.0;
-    */  
+        else document.getElementById("cBox").innerHTML = 0;
+        dAngle = 0.0;
+     
         if(document.getElementById("cBox").checked == true) {
             dAngle = 0.0;
             stoprotating = 1;
