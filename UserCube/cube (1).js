@@ -2,7 +2,7 @@ var cube = null;
 var gl = null;
 
 var canvas = undefined;
-//var P = undefined;  // matrix storing the projection transformation
+var P = undefined;  // matrix storing the projection transformation
 var near = 1.0;     // near clipping plane's distance
 var far = 10.0;     // far clipping plane's distance
 
