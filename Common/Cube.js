@@ -19,49 +19,43 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     this.positions = { 
         values : new Float32Array([
            // Add your list vertex positions here
-             //Front face
-   0.0,  0.0,  1.0,
-   1.0,  0.0,  1.0,
-   1.0,  1.0,  1.0,
-   0.0,  1.0,  1.0,
-  
-  // Back face
-   0.0,  0.0,  0.0,
-   0.0,  1.0,  0.0,
-   1.0,  1.0,  0.0,
-   1.0,  0.0,  0.0,
-  
-  // Top face
-   0.0,  1.0,  0.0,
-   0.0,  1.0,  1.0,
-   1.0,  1.0,  1.0,
-   1.0,  1.0,  0.0,
-  
-  // Bottom face
-   0.0,  0.0,  0.0,
-   1.0,  0.0,  0.0,
-   1.0,  0.0,  1.0,
-   0.0,  0.0,  1.0,
-  
-  // Right face
-   1.0,  0.0,  0.0,
-   1.0,  1.0,  0.0,
-   1.0,  1.0,  1.0,
-   1.0,  0.0,  1.0,
-  
-  // Left face
-   0.0,  0.0,  0.0,
-   0.0,  0.0,  1.0,
-   0.0,  1.0,  1.0,
-   0.0,  1.0,  0.0,
+          -0.5, -0.5, 0.5,
+           0.5, -0.5, 0.5,
+           0.5, 0.5, 0.5,
+          -0.5, 0.5, 0.5, 
+
+          -0.5, -0.5, -0.5,
+          -0.5, 0.5, -0.5,
+           0.5, 0.5, -0.5,
+           0.5, -0.5, -0.5,
+	  
+          -0.5, 0.5, -0.5,
+          -0.5, 0.5, 0.5,
+           0.5, 0.5, 0.5,
+           0.5, 0.5, -0.5,
+	
+          -0.5, -0.5, -0.5,
+           0.5, -0.5, -0.5, 
+           0.5, -0.5, 0.5, 
+          -0.5, -0.5, 0.5, 	
+		
+           0.5, -0.5, -0.5,  
+           0.5, 0.5, -0.5, 
+           0.5, 0.5, 0.5, 
+           0.5, -0.5, 0.5,
+
+          -0.5, -0.5, -0.5, 
+          -0.5, -0.5, 0.5, 
+          -0.5, 0.5, 0.5,   
+          -0.5, 0.5, -0.5  
+            
             ]),
         numComponents : 3
     };
-    
-     this.colors = { 
+         this.colors = { 
         values : new Float32Array([
            
-        0.4,  0.4,  0.4,
+          	0.4,  0.4,  0.4,
    		0.4,  0.4,  0.4,
    		0.4,  0.4,  0.4,
    		0.4,  0.4,  0.4,
@@ -93,26 +87,30 @@ function Cube( vertexShaderId, fragmentShaderId ) {
             ]),
         numComponents : 3
     };
+    
+    
     this.indices = { 
         values : new Uint16Array([
             // Add your list of triangle indices here
-            //Indices 
-0,  1,  2,      0,  2,  3,    // front
-4,  5,  6,      4,  6,  7,    // back
-8,  9,  10,     8,  10, 11,   // top
-12, 13, 14,     12, 14, 15,   // bottom
-16, 17, 18,     16, 18, 19,   // right
-20, 21, 22,     20, 22, 23,   // left
+                0,  2,  1,      0,  3,  2,    
+		4,  6,  5,      4,  7,  6,    
+		8,  10,  9,     8,  11, 10,   
+		12, 14, 13,     12, 15, 14,   
+		16, 18, 17,     16, 19, 18,   
+		20, 22, 21,     20, 23, 22   
+
         ])
     };
     this.indices.count = this.indices.values.length;
 
     
-    
-    
     this.positions.buffer = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
     gl.bufferData( gl.ARRAY_BUFFER, this.positions.values, gl.STATIC_DRAW );
+	
+    this.colors.buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.colors.buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, this.colors.values, gl.STATIC_DRAW);
 
     this.indices.buffer = gl.createBuffer();
     gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
@@ -120,7 +118,9 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 
     this.positions.attributeLoc = gl.getAttribLocation( this.program, "vPosition" );
     gl.enableVertexAttribArray( this.positions.attributeLoc );
-
+    this.colors.attributeLoc = gl.getAttribLocation( this.program, "vColor");
+    gl.enableVertexAttribArray( this.colors.attributeLoc);
+    
     MVLoc = gl.getUniformLocation( this.program, "MV" );
 
     this.MV = undefined;
@@ -129,15 +129,14 @@ function Cube( vertexShaderId, fragmentShaderId ) {
         gl.useProgram( this.program );
 
         gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
-        gl.vertexAttribPointer( this.positions.attributeLoc, this.positions.numComponents,
-            gl.FLOAT, gl.FALSE, 0, 0 );
+        gl.vertexAttribPointer( this.positions.attributeLoc, this.positions.numComponents, gl.FLOAT, gl.FALSE, 0, 0 );
  
+	 gl.bindBuffer( gl.ARRAY_BUFFER, this.colors.buffer );
+    	gl.vertexAttribPointer( this.colors.attributeLoc, this.colors.numComponents, gl.FLOAT, gl.FALSE, 0, 0 );
+	    
         gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
-
+	    
         gl.uniformMatrix4fv( MVLoc, gl.FALSE, flatten(this.MV) );
-
-
         // Draw the cube's base
-        gl.drawElements( gl.TRIANGLES, this.indices.count, gl.UNSIGNED_SHORT, 0 );
+	gl.drawElements(gl.TRIANGLES, this.indices.count, gl.UNSIGNED_SHORT, 0);
     }
-};
