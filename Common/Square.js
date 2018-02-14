@@ -43,16 +43,16 @@ function Square(gl, vertexShaderId, fragmentShaderId) {
    0.0,  0.0,  1.0,
   
   // Right face
-   1.0,  0.0,  1.0,
-   1.0,  1.0,  1.0,
-   1.0,  1.0,  0.0,
    1.0,  0.0,  0.0,
+   1.0,  1.0,  0.0,
+   1.0,  1.0,  1.0,
+   1.0,  0.0,  1.0,
   
   // Left face
-   0.0,  0.0,  1.0,
    0.0,  0.0,  0.0,
-   0.0,  1.0,  0.0,
+   0.0,  0.0,  1.0,
    0.0,  1.0,  1.0,
+   0.0,  1.0,  0.0,
 			
 		]),
 		numComponents : 2 // 3 components for each
