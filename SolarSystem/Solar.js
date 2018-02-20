@@ -63,13 +63,13 @@ function init() {
   // parameters.  This loops adds additinoal properties to each object
   // in the Planets object;
 
-  for (var Sun, Earth in Planets ) {
+  for (var name in Planets ) {
 
     // Create a new sphere object for our planet, and assign it into the
     // appropriate place in the Planets dictionary.  And to simplify the code
     // assign that same value to the local variable "p", for later use.
 
-    var planet = Planets[Sun, Earth] = new Sphere();
+    var planet = Planets[name] = new Sphere();
 
     // For each planet, we'll add a new property (which itself is a 
     // dictionary) that contains the uniforms that we will use in
@@ -115,13 +115,93 @@ function render() {
   // about the planets in SolarSystem.  Look at how these are
   // used; it'll simplify the work you need to do.
 
-  var Sun, Earth, planet, data;
+  var name, planet, data;
 
-  Sun = "Sun";
-  Earth = "Earth";
+  name = "Sun";
+  //name = "Earth";
   
-  planet = Planets[Sun, Earth];
-  data = SolarSystem[Sun, Earth];
+  planet = Planets[name];
+  data = SolarSystem[name];
+  
+ 
+  
+  //name = "Mercury";
+  
+   //name = "Venus";
+  
+    
+   //name = "Moon"; 
+  
+   //name = "Mars"; 
+  
+   //name = "Jupiter"; 
+  
+  // name = "Saturn"; 
+  
+   //name = "Uranus"; 
+  
+ // name =  "Neptune";
+  
+   //name = "Pluto"; 
+  
+  
+  // Set PointMode to true to render all the vertices as points, as
+  // compared to filled triangles.  This can be useful if you think
+  // your planet might be inside another planet or the Sun.  Since the
+  // "planet" variable is set for each object, you will need to set this
+  // for each planet separately.
+
+  planet.PointMode = false;
+
+  // Use the matrix stack to configure and render a planet.  How you rener
+  // each planet will be similar, but not exactly the same.  In particular,
+  // here, we're only rendering the Sun, which is the center of the Solar
+  // system (and hence, has no translation to its location).
+
+  ms.push();
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+
+  //
+  //  Add your code for more planets here!
+  //
+
+  window.requestAnimationFrame(render);
+}
+function render() {
+  time += timeDelta;
+
+  var ms = new MatrixStack();
+
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+  // Specify the viewing transformation, and use it to initialize the 
+  // matrix stack
+
+  V = translate(0.0, 0.0, -0.5*(near + far));
+  ms.load(V);  
+
+  // Create a few temporary variables to make it simpler to work with
+  // the various properties we'll use to render the planets.  The Planets
+  // dictionary (created in init()) can be indexed by each planet's name.
+  // We'll use the temporary variables "planet" to reference the geometric
+  // information (e.g., sphere model) we created in the Planets array.
+  // Likewise, we'll use "data" to reference the database of information
+  // about the planets in SolarSystem.  Look at how these are
+  // used; it'll simplify the work you need to do.
+
+  var name, planet, data;
+
+  //name = "Sun";
+  name = "Earth";
+  
+  planet = Planets[name];
+  data = SolarSystem[name];
   
  
   
