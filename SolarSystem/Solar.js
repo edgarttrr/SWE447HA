@@ -115,19 +115,15 @@ function render() {
   // about the planets in SolarSystem.  Look at how these are
   // used; it'll simplify the work you need to do.
 
-  var name, planet, data;
+  var name1, name2, planet, data;
 
-  name = "Sun";
+  name1 = "Sun";
+  name2 = "Earth";
   
   planet = Planets[name];
   data = SolarSystem[name];
   
-  var name, planet, data;
-
-  name = "Earth";
-  
-  planet = Planets[name];
-  data = SolarSystem[name];
+ 
   
   //name = "Mercury";
   
