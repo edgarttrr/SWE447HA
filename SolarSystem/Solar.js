@@ -118,18 +118,36 @@ function render() {
   var name, planet, data;
 
   name = "Sun";
-  name = "Mercury";
-   name = "Venus";
-   name = "Earth"; 
-   name = "Moon"; 
-   name = "Mars"; 
-   name = "Jupiter"; 
-   name = "Saturn"; 
-   name = "Uranus"; 
-  name =  "Neptune";
-   name = "Pluto"; 
+  
   planet = Planets[name];
   data = SolarSystem[name];
+  
+  var name, planet, data;
+
+  name = "Earth";
+  
+  planet = Planets[name];
+  data = SolarSystem[name];
+  
+  //name = "Mercury";
+  
+   //name = "Venus";
+  
+    
+   //name = "Moon"; 
+  
+   //name = "Mars"; 
+  
+   //name = "Jupiter"; 
+  
+  // name = "Saturn"; 
+  
+   //name = "Uranus"; 
+  
+ // name =  "Neptune";
+  
+   //name = "Pluto"; 
+  
   
   // Set PointMode to true to render all the vertices as points, as
   // compared to filled triangles.  This can be useful if you think
