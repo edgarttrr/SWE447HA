@@ -118,6 +118,16 @@ function render() {
   var name, planet, data;
 
   name = "Sun";
+  name = "Mercury";
+   name = "Venus";
+   name = "Earth"; 
+   name = "Moon"; 
+   name = "Mars"; 
+   name = "Jupiter"; 
+   name = "Saturn"; 
+   name = "Uranus"; 
+  name =  "Neptune";
+   name = "Pluto"; 
   planet = Planets[name];
   data = SolarSystem[name];
   
