@@ -63,13 +63,13 @@ function init() {
   // parameters.  This loops adds additinoal properties to each object
   // in the Planets object;
 
-  for (var name in Planets ) {
+  for (var Sun, Earth in Planets ) {
 
     // Create a new sphere object for our planet, and assign it into the
     // appropriate place in the Planets dictionary.  And to simplify the code
     // assign that same value to the local variable "p", for later use.
 
-    var planet = Planets[name] = new Sphere();
+    var planet = Planets[Sun, Earth] = new Sphere();
 
     // For each planet, we'll add a new property (which itself is a 
     // dictionary) that contains the uniforms that we will use in
@@ -115,13 +115,13 @@ function render() {
   // about the planets in SolarSystem.  Look at how these are
   // used; it'll simplify the work you need to do.
 
-  var name, name, planet, data;
+  var Sun, Earth, planet, data;
 
-  name = "Sun";
-  name = "Earth";
+  Sun = "Sun";
+  Earth = "Earth";
   
-  planet = Planets[name];
-  data = SolarSystem[name];
+  planet = Planets[Sun, Earth];
+  data = SolarSystem[Sun, Earth];
   
  
   
