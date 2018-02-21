@@ -22,7 +22,7 @@ var Planets = {
    Venus : undefined,
    Earth : undefined,
    Moon : undefined,
-   Mars : undefined,
+  Mars : undefined,
    Jupiter : undefined,
    Saturn : undefined,
    Uranus : undefined,
@@ -36,7 +36,7 @@ var V;  // matrix storing the viewing transformation
 // Projection transformation parameters
 var P;  // matrix storing the projection transformation
 var near = 10;      // near clipping plane's distance
-var far = 120;      // far clipping plane's distance
+var far = 50;      // far clipping plane's distance
 
 // Animation variables
 var time = 0.0;      // time, our global time constant, which is 
@@ -118,32 +118,8 @@ function render() {
   var name, planet, data;
 
   name = "Sun";
-  //name = "Earth";
-  
   planet = Planets[name];
   data = SolarSystem[name];
-  
- 
-  
-  //name = "Mercury";
-  
-   //name = "Venus";
-  
-    
-   //name = "Moon"; 
-  
-   //name = "Mars"; 
-  
-   //name = "Jupiter"; 
-  
-  // name = "Saturn"; 
-  
-   //name = "Uranus"; 
-  
- // name =  "Neptune";
-  
-   //name = "Pluto"; 
-  
   
   // Set PointMode to true to render all the vertices as points, as
   // compared to filled triangles.  This can be useful if you think
@@ -159,6 +135,7 @@ function render() {
   // system (and hence, has no translation to its location).
 
   ms.push();
+
   ms.scale(data.radius);
   gl.useProgram(planet.program);
   gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
@@ -170,15 +147,124 @@ function render() {
   //
   //  Add your code for more planets here!
   //
+  
+  name = "Earth";
+  planet = Planets[name];
+  data = SolarSystem[name];
+  
+  // Set PointMode to true to render all the vertices as points, as
+  // compared to filled triangles.  This can be useful if you think
+  // your planet might be inside another planet or the Sun.  Since the
+  // "planet" variable is set for each object, you will need to set this
+  // for each planet separately.
 
+  planet.PointMode = false;
+
+  // Use the matrix stack to configure and render a planet.  How you rener
+  // each planet will be similar, but not exactly the same.  In particular,
+  // here, we're only rendering the Sun, which is the center of the Solar
+  // system (and hence, has no translation to its location).
+
+  ms.push();
+  ms.rotate(time / data.year, [0, 0, 1]);
+  ms.translate(data.distance, 8, 5);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+  
+  
+   name = "Mercury";
+  planet = Planets[name];
+  data = SolarSystem[name];
+  
+  // Set PointMode to true to render all the vertices as points, as
+  // compared to filled triangles.  This can be useful if you think
+  // your planet might be inside another planet or the Sun.  Since the
+  // "planet" variable is set for each object, you will need to set this
+  // for each planet separately.
+
+  planet.PointMode = false;
+
+  // Use the matrix stack to configure and render a planet.  How you rener
+  // each planet will be similar, but not exactly the same.  In particular,
+  // here, we're only rendering the Sun, which is the center of the Solar
+  // system (and hence, has no translation to its location).
+
+  ms.push();
+  ms.rotate(time / data.year, [0, 0, 1]);
+  ms.translate(data.distance, 8, 5);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+
+   name = "Venus";
+  planet = Planets[name];
+  data = SolarSystem[name];
+  
+  // Set PointMode to true to render all the vertices as points, as
+  // compared to filled triangles.  This can be useful if you think
+  // your planet might be inside another planet or the Sun.  Since the
+  // "planet" variable is set for each object, you will need to set this
+  // for each planet separately.
+
+  planet.PointMode = false;
+
+  // Use the matrix stack to configure and render a planet.  How you rener
+  // each planet will be similar, but not exactly the same.  In particular,
+  // here, we're only rendering the Sun, which is the center of the Solar
+  // system (and hence, has no translation to its location).
+
+  ms.push();
+  ms.rotate(time / data.year, [0, 0, 1]);
+  ms.translate(data.distance, 8, 5);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+  
+   name = "Mars";
+  planet = Planets[name];
+  data = SolarSystem[name];
+  
+  // Set PointMode to true to render all the vertices as points, as
+  // compared to filled triangles.  This can be useful if you think
+  // your planet might be inside another planet or the Sun.  Since the
+  // "planet" variable is set for each object, you will need to set this
+  // for each planet separately.
+
+  planet.PointMode = false;
+
+  // Use the matrix stack to configure and render a planet.  How you rener
+  // each planet will be similar, but not exactly the same.  In particular,
+  // here, we're only rendering the Sun, which is the center of the Solar
+  // system (and hence, has no translation to its location).
+
+  ms.push();
+  ms.rotate(time / data.year, [0, 0, 1]);
+  ms.translate(data.distance, 8, 5);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+  ms.pop();
+  
+  
+  
   window.requestAnimationFrame(render);
 }
-
-
-//---------------------------------------------------------------------------
-//
-//  resize() - handle resize events
-//
 
 function resize() {
   var w = canvas.clientWidth;
@@ -199,3 +285,4 @@ function resize() {
 
 window.onload = init;
 window.onresize = resize;
+
