@@ -7,7 +7,7 @@ var SolarSystem = {
   },
   Mercury : {
     radius : 0.244,
-    distance : 0.06,
+    distance : 0.1,
     year : 0.241,
     color : [ 1.0, 0.0, 0.0, 1.0 ]
   },
