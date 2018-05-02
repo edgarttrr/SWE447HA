@@ -84,7 +84,7 @@ var render = function () {
 
 	requestAnimationFrame(render);
     
-	holder.rotation.x += 0.01;
+	holder.rotation.x += 0.00;
 	holder.rotation.y += 0.01;
 	renderer.render(scene, camera);
 }
